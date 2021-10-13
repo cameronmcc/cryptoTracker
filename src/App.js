@@ -44,7 +44,6 @@ function App() {
             <Coin
               key={coin.id}
               name={coin.name}
-              price={coin.price}
               image={coin.image}
               symbol={coin.symbol}
               marketcap={coin.market_cap}
