@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Coin from './Coin';
 
 function App() {
+  // State for coins and search logic
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState('');
 
@@ -19,6 +20,8 @@ function App() {
       .catch((error) => console.log(error));
   }, []);
 
+  // Search engine logic
+
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
@@ -33,6 +36,7 @@ function App() {
         <h1>Search a currency</h1>
         <form>
           <div className='input-wrapper'>
+            {/* We use onChange to invoke the search as we type in values. The submit button here actually isn't even needed  */}
             <input
               onChange={handleChange}
               type='text'
@@ -45,6 +49,7 @@ function App() {
           </button>
         </form>
         <div className='data-wrapper'>
+          {/* We map through 'filteredCoins', not our normal 'coins' state variable. All coins will be generated below as rows if nothing is in the search bar. As soon as something is typed into our search bar which has an onChange, our '.includes()' contained in our filteredCoins function targets what the user typed into the search bar and only those filtered results render. */}
           {filteredCoins.map((coin) => {
             return (
               <Coin
