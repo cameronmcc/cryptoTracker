@@ -6,7 +6,7 @@ import Coin from './Coin';
 function App() {
   // State for coins and search logic
   const [coins, setCoins] = useState([]); // coins will be set with data from our initial response.
-  const [search, setSearch] = useState(''); // search will be set with handleChange as search params. We use this to get a filtered result from coins.
+  const [search, setSearch] = useState(''); // search will be set with handleChange as our search parameter. We use this to get a filtered result from coins.
 
   useEffect(() => {
     axios
