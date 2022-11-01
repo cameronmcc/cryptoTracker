@@ -5,8 +5,8 @@ import Coin from './Coin';
 
 function App() {
   // State for coins and search logic
-  const [coins, setCoins] = useState([]);
-  const [search, setSearch] = useState('');
+  const [coins, setCoins] = useState([]); // coins will be set from our data from our initial response.
+  const [search, setSearch] = useState(''); // search will be set with handleChange as search params. We use this to get a filtered result from coins.
 
   useEffect(() => {
     axios
@@ -15,19 +15,18 @@ function App() {
       )
       .then((res) => {
         setCoins(res.data);
-        console.log(res.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  // Search engine logic
-
+  // The handle change will be used to dynamically change our search variable to match whatever is typed in the search bar.
   const handleChange = (e) => {
     setSearch(e.target.value);
   };
-
+  
+  //Make our seach param and our data lower case, then map through our coins response data and check if coin.name includes what we have typed in our search.
   const filteredCoins = coins.filter((coin) =>
-    coin.name.toLowerCase().includes(search.toLowerCase())
+    coin.name.toLowerCase().includes(search.toLowerCase()) //
   );
 
   return (
@@ -36,7 +35,7 @@ function App() {
         <h1>Search a currency</h1>
         <form>
           <div className='input-wrapper'>
-            {/* We use onChange to invoke the search as we type in values. The submit button here actually isn't even needed  */}
+            {/* We set onChange to our handleChange funtion to invoke the search as we type in values. The submit button here actually isn't even needed  */}
             <input
               onChange={handleChange}
               type='text'
@@ -49,10 +48,10 @@ function App() {
           </button>
         </form>
         <div className='data-wrapper'>
-          {/* We map through 'filteredCoins', not our normal 'coins' state variable. All coins will be generated below as rows if nothing is in the search bar. As soon as something is typed into our search bar which has an onChange, our '.includes()' contained in our filteredCoins function targets what the user typed into the search bar and only those filtered results render. */}
+          {/* We actually map through our filteredCoins variable by default, not our normal 'coins' state variable. All coins will be generated below if nothing is in the search bar. As soon as something is typed into our search bar which has an onChange, the search variable is updated, and is then used to update search results. Only search results are displayed */}
           {filteredCoins.map((coin) => {
             return (
-              <Coin
+              <Coin //Coin is our component we imported
                 key={coin.id}
                 name={coin.name}
                 image={coin.image}
