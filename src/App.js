@@ -48,7 +48,7 @@ function App() {
           </button>
         </form>
         <div className='data-wrapper'>
-          {/* We actually map through our filteredCoins variable by default, not our normal 'coins' state variable. All coins will be generated below if nothing is in the search bar. As soon as something is typed into our search bar which has an onChange, the search variable is updated, and is then used to update search results. Only search results are displayed */}
+          {/* We actually map through our filteredCoins variable by default to generate the coins the user sees on the page, not our normal 'coins' state variable. We can do this because if nothing is typed in the search bar, the search param variable will be set to an empty string and filteredResults will just display all results. As soon as something is typed into our search bar which has an onChange, the search variable is updated, and is then used to update search results. */}
           {filteredCoins.map((coin) => {
             return (
               <Coin //Coin is our component we imported
