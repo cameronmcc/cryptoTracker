@@ -35,7 +35,7 @@ function App() {
         <h1>Search a currency</h1>
         <form>
           <div className='input-wrapper'>
-            {/* We set onChange to our handleChange funtion to invoke the search as we type in values. The submit button here actually isn't even needed  */}
+            {/* We set onChange to our handleChange function to invoke the search as we type in values. The submit button here actually isn't even needed  */}
             <input
               onChange={handleChange}
               type='text'
